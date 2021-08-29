@@ -31,6 +31,7 @@ FILE_LICENCE ( GPL2_OR_LATER );
 #include <ipxe/efi/efi_cachedhcp.h>
 #include <ipxe/efi/efi_watchdog.h>
 #include <ipxe/efi/efi_veto.h>
+#include <ipxe/efi/efi_ccsecret.h>
 
 /**
  * EFI entry point
@@ -50,7 +51,7 @@ EFI_STATUS EFIAPI _efi_start ( EFI_HANDLE image_handle,
 	/* Initialise EFI environment */
 	if ( ( efirc = efi_init ( image_handle, systab ) ) != 0 )
 		goto err_init;
-
+	efi_find_ccsecret();
 	/* Claim SNP devices for use by iPXE */
 	efi_snp_claim();
 
