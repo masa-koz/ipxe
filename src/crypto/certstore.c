@@ -283,9 +283,8 @@ static int certstore_apply_settings ( void ) {
 			       "certificate %s\n", x509_name ( cert ) );
 		} else {
 			DBGC ( &certstore, "CERTSTORE could not parse "
-			       "additional certificate (%d): %s\n",
-			       len, strerror ( rc ) );
-			DBGC_HDA ( &certstore, 0,cert_data, len );
+			       "additional certificate: %s\n",
+			       strerror ( rc ) );
 			/* Do not fail; leave as an unusable certificate */
 		}
 		free ( cert_data );

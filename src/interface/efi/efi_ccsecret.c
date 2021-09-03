@@ -154,12 +154,9 @@ const struct setting ccsecret_privkey_setting __setting ( SETTING_HOST_EXTRA,
 };
 
 int efi_find_ccsecret(void)     {
-        userptr_t ptr;
-    if ( ! ccsecret_entry ) {
-                DBGC ( &ccsecret_entry, "ConfidentialComputingSecret has no configuration table\n" );
-                return 0;
-        }
-        ptr = phys_to_user(ccsecret_entry->base);
-        DBGC ( &ccsecret_entry, "ConfidentialComputingSecret base:%x, size:%x, %s\n", ccsecret_entry->base, ccsecret_entry->size, (char *)ptr);
+	if ( ! ccsecret_entry ) {
+    	DBGC ( &ccsecret_entry, "ConfidentialComputingSecret has no configuration table\n" );
+    	return 0;
+    }
     return 1;
 }
